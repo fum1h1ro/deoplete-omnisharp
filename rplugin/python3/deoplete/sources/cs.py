@@ -22,7 +22,8 @@ class Source(Base):
         return m.start() if m else -1
 
     def gather_candidates(self, context):
-        host = self.vim.eval('g:OmniSharp_host')
+        #host = self.vim.eval('g:OmniSharp_host')
+        host = self.vim.eval('OmniSharp#GetHost()')
         url = "%s/autocomplete" % host
         cur = self.vim.current
         win = cur.window
