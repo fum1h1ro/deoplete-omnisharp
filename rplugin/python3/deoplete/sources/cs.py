@@ -4,7 +4,7 @@ import urllib
 import urllib.request
 import urllib.parse
 from .base import Base
-from deoplete.util import get_simple_buffer_config, error
+from deoplete.util import error
 
 class Source(Base):
     def __init__(self, vim):
@@ -22,7 +22,8 @@ class Source(Base):
         return m.start() if m else -1
 
     def gather_candidates(self, context):
-        host = self.vim.eval('g:OmniSharp_host')
+        #host = self.vim.eval('g:OmniSharp_host')
+        host = self.vim.eval('OmniSharp#GetHost()')
         url = "%s/autocomplete" % host
         cur = self.vim.current
         win = cur.window
